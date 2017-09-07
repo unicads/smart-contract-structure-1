@@ -1,23 +1,21 @@
 # Brickblock DApp Prototype
 
-DO NOT USE! The code in this repository is a preview intended for educational purposes only. 
+DO NOT USE! The code in this repository is a preview intended for educational purposes only.
 
 These are the Solidity contracts implementing the Brickblock Proof-of-Asset scheme.
 
-## Setup
+## Setup & Test
 
-First, install dependencies:
+1. Install dependencies:
 
+    ```sh
     npm install
-    npm install -g truffle ethereumjs-testrpc
+    ```
 
-Then run the testrpc server, compile and migrate the contracts:
+2. Run tests:
 
-    testrpc &
-    truffle compile && truffle migrate
-
-Now you can run the tests:
-
-    truffle test
+    ```sh
+    npm test
+    ```
 
 NOTE: The testrpc needs to be restarted for every test run, since the accounts run out of funds.

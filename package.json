@@ -2,7 +2,7 @@
   "name": "brickblock",
   "version": "0.0.1",
   "description": "",
-  "author": "Marius Hanne",
+  "author": "Marius Hanne <marius@brickblock.io>",
   "contributors": [
     "Adrian Kizlauskas <adrian@brickblock.io>",
     "Matthew G. Stevens <matt@brickblock.io>",
@@ -14,7 +14,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "truffle test",
+    "start:testrpc": "testrpc --network-id test-network",
+    "pretest": "yarn start:testrpc > /dev/null & sleep 1 && truffle compile && truffle migrate",
+    "test": "truffle test --network test",
+    "posttest": "pkill -f testrpc",
     "lint": "solium --dir ./contracts"
   },
   "dependencies": {
