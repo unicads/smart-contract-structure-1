@@ -2,9 +2,20 @@
   "name": "brickblock",
   "version": "0.0.1",
   "description": "",
+  "author": "Marius Hanne",
+  "contributors": [
+    "Adrian Kizlauskas <adrian@brickblock.io>",
+    "Matthew G. Stevens <matt@brickblock.io>",
+    "Philip Paetz <philip@brickblock.io>"
+  ],
+  "license": "MIT",
   "main": "index.js",
   "directories": {
     "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "lint": "solium --dir ./contracts"
   },
   "dependencies": {
     "truffle": "^3.4.7",
@@ -12,11 +23,7 @@
     "zeppelin-solidity": "^1.2.0"
   },
   "devDependencies": {
-    "chai": "^4.1.0"
-  },
-  "scripts": {
-    "test": "truffle test"
-  },
-  "author": "Marius Hanne",
-  "license": "MIT"
+    "chai": "^4.1.0",
+    "solium": "~0.5.5"
+  }
 }
