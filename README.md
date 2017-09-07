@@ -9,7 +9,7 @@ These are the Solidity contracts implementing the Brickblock Proof-of-Asset sche
 First, install dependencies:
 
     npm install
-    npm install -g truffle ethereumjs-testrpc webpack-dev-server
+    npm install -g truffle ethereumjs-testrpc
 
 Then run the testrpc server, compile and migrate the contracts:
 
@@ -19,3 +19,5 @@ Then run the testrpc server, compile and migrate the contracts:
 Now you can run the tests:
 
     truffle test
+
+NOTE: The testrpc needs to be restarted for every test run, since the accounts run out of funds.
