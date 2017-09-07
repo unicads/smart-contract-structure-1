@@ -18,12 +18,13 @@
     "lint": "solium --dir ./contracts"
   },
   "dependencies": {
-    "truffle": "^3.4.7",
+    "truffle": "^3.4.9",
     "truffle-contract": "^2.0.2",
     "zeppelin-solidity": "^1.2.0"
   },
   "devDependencies": {
     "chai": "^4.1.0",
+    "ethereumjs-testrpc": "^4.1.1",
     "solium": "~0.5.5"
   }
 }
