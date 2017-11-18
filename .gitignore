@@ -1,4 +1,24 @@
-/node_modules/
-/dist/
-*~
-/build
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+package-lock.json
+yarn-error.log
+
+# testing
+coverage
+
+# production
+build
+src/contracts
+
+# misc
+.DS_Store
+.env
+npm-debug.log
+.truffle-solidity-loader
+
+# tmp files
+~*
+.#*
+.editorconfig
