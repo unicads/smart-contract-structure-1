@@ -39,8 +39,8 @@ The code to release the company tokens will look something like this:
 ```
 function claimCompanyTokens() public onlyOwner returns (bool) {
   require(block.number > companyShareReleaseBlock);
-  BrickblockToken _bbt = BrickblockToken(brickBlockTokenAddress);
-  uint256 _companyTokens = balanceOf(_bbt);
+  BrickblockToken _bbk = BrickblockToken(brickBlockTokenAddress);
+  uint256 _companyTokens = balanceOf(_bbk);
   balances[this].tokens = balances[this].tokens.sub(_companyTokens);
   balances[owner].tokens = balances[owner].tokens.add(_companyTokens);
   updateAccount(brickBlockTokenAddress, 0);

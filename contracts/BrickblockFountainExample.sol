@@ -21,7 +21,7 @@ contract BrickblockFountainExample is Ownable {
   uint256 public constant companyShareReleaseBlock = 1234567;
   address public brickBlockTokenAddress;
 
-  event BBTLocked(address _locker, uint256 _value);
+  event BBKLocked(address _locker, uint256 _value);
   event CompanyTokensReleased(address _owner, uint256 _tokenAmount);
   event Placeholder(address _address, uint256 _value);
 
@@ -42,34 +42,34 @@ contract BrickblockFountainExample is Ownable {
 
   // this will be called to owner to lock in company tokens. they cannot be claimed until 2020
   function lockCompanyFunds() public onlyOwner returns (bool) {
-    BrickblockToken _bbt = BrickblockToken(brickBlockTokenAddress);
-    uint256 _value = _bbt.allowance(brickBlockTokenAddress, this);
+    BrickblockToken _bbk = BrickblockToken(brickBlockTokenAddress);
+    uint256 _value = _bbk.allowance(brickBlockTokenAddress, this);
     require(_value > 0);
-    _bbt.transferFrom(brickBlockTokenAddress, this, _value);
+    _bbk.transferFrom(brickBlockTokenAddress, this, _value);
     updateAccount(brickBlockTokenAddress, balances[brickBlockTokenAddress].tokens.add(_value));
-    BBTLocked(brickBlockTokenAddress, _value);
+    BBKLocked(brickBlockTokenAddress, _value);
   }
 
   // this is a basic representation of how locking tokens will look for contributors
-  function lockBBT() public returns (uint256 _value) {
+  function lockBBK() public returns (uint256 _value) {
     address user = msg.sender;
-    BrickblockToken _bbt = BrickblockToken(brickBlockTokenAddress);
-    _value = _bbt.allowance(user, this);
+    BrickblockToken _bbk = BrickblockToken(brickBlockTokenAddress);
+    _value = _bbk.allowance(user, this);
     require(_value > 0);
-    _bbt.transferFrom(user, this, _value);
+    _bbk.transferFrom(user, this, _value);
     updateAccount(user, balances[user].tokens.add(_value));
-    BBTLocked(user, _value);
+    BBKLocked(user, _value);
   }
 
   // the company will only be able to claim tokens through this function
   function claimCompanyTokens() public onlyOwner returns (bool) {
     require(block.number > companyShareReleaseBlock);
-    BrickblockToken _bbt = BrickblockToken(brickBlockTokenAddress);
-    uint256 _companyTokens = balanceOf(_bbt);
+    BrickblockToken _bbk = BrickblockToken(brickBlockTokenAddress);
+    uint256 _companyTokens = balanceOf(_bbk);
     balances[this].tokens = balances[this].tokens.sub(_companyTokens);
     balances[owner].tokens = balances[owner].tokens.add(_companyTokens);
     updateAccount(brickBlockTokenAddress, 0);
-    _bbt.transfer(owner, _companyTokens);
+    _bbk.transfer(owner, _companyTokens);
     CompanyTokensReleased(owner, _companyTokens);
   }
 

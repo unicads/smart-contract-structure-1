@@ -11,7 +11,7 @@ contract BrickblockTokenUpgraded is BrickblockToken {
   // change the name of the 'new' contract
   string public constant name = "BrickblockTokenNew";
   // change the symbol of the 'new' contract
-  string public constant symbol = "BBT-NEW";
+  string public constant symbol = "BBK-NEW";
   // add a new constant to test
   string public newThing;
 
